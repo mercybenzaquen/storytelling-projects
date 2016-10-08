@@ -1,7 +1,7 @@
 
 (function() {
   var margin = { top: 30, left: 100, right: 30, bottom: 30},
-  height = 400 - margin.top - margin.bottom,
+  height = 2000 - margin.top - margin.bottom,
   width = 780 - margin.left - margin.right;
 
   console.log("Building chart 1");
@@ -15,12 +15,12 @@
   var yPositionScale = d3.scaleLinear().range([height, 0])
   var line = d3.line()
     .x(function(d) {
-      return xPositionScale(d.datetime);
+      return xPositionScale(d.Score);
       })
     .y(function(d) {
-      return yPositionScale(d.Score);
+      return yPositionScale(d.datetime);
       })
-    .curve(d3.curveMonotoneX)
+    //.curve(d3.curveMonotoneX)
 
   var tip = d3.tip()
     .attr('class', 'd3-tip')
@@ -29,9 +29,8 @@
 //       return [this.getBBox().height / 2, 0]
 // })
     .html(function(d) {
-      return "<span style='color:white; font-size: 10pt; align: center'>" + d.trump + "</span>";
+      return "<span style='color:white; font-size: 8pt; font-family: sans-serif; align: center'>" + d.trump + "</span>"
     })
-
 
   var svg = d3.select("#project1-chart1")
     .append("svg")
@@ -73,11 +72,11 @@
     // NOTE:I've done it for the datetime, you do it for the close price
     var minDatetime = d3.min(datapoints, function(d) { return d.datetime });
     var maxDatetime = d3.max(datapoints, function(d) { return d.datetime });
-    xPositionScale.domain([minDatetime, maxDatetime])
+    yPositionScale.domain([maxDatetime, minDatetime])
 
     var minClosetime = d3.min(datapoints, function(d) { return d.Score });
     var maxClosetime = d3.max(datapoints, function(d) { return d.Score });
-    yPositionScale.domain([minClosetime, maxClosetime])
+    xPositionScale.domain([minClosetime, maxClosetime])
 
 
     // Draw your dots
@@ -96,10 +95,10 @@
         .attr("stroke-width", 2)
         .attr("fill", "white")
         .attr("cx", function(d) {
-          return xPositionScale(d.datetime)
+          return xPositionScale(d.Score)
         })
         .attr("cy", function(d) {
-          return yPositionScale(d.Score)
+          return yPositionScale(d.datetime)
         })
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide);
@@ -110,20 +109,20 @@
       .attr("d", line)
       .attr("fill", "none")
       .attr("stroke", "red")
-      .attr("stroke-width", 2)
+      .attr("stroke-width", 3)
 
 
 
     // Add your axes - I've added the x axis for you
     // Notice that xAxis gets a .tickFormat to format the dates!
     // You won't use this again unless you're doing time again.
-      var xAxis = d3.axisBottom(xPositionScale).tickFormat(d3.timeFormat("%m/%d/%y"));
+      var xAxis = d3.axisBottom(xPositionScale);
       svg.append("g")
         .attr("class", "axis x-axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
-      var yAxis = d3.axisLeft(yPositionScale);
+      var yAxis = d3.axisLeft(yPositionScale).tickFormat(d3.timeFormat("%Y"));
       svg.append("g")
         .attr("class", "axis y-axis")
         .call(yAxis);
