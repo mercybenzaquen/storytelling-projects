@@ -73,7 +73,7 @@
     // NOTE:I've done it for the datetime, you do it for the close price
     var minDatetime = d3.min(datapoints, function(d) { return d.datetime });
     var maxDatetime = d3.max(datapoints, function(d) { return d.datetime });
-    xPositionScale.domain([maxDatetime, minDatetime])
+    xPositionScale.domain([minDatetime, maxDatetime])
 
     var minClosetime = d3.min(datapoints, function(d) { return d.Score });
     var maxClosetime = d3.max(datapoints, function(d) { return d.Score });
