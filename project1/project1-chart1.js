@@ -96,10 +96,10 @@
         .attr("stroke-width", 2)
         .attr("fill", "white")
         .attr("cx", function(d) {
-          return xPositionScale(d.Score)
+          return xPositionScale(d.datetime)
         })
         .attr("cy", function(d) {
-          return yPositionScale(d.datetime)
+          return yPositionScale(d.Score)
         })
 
         .on('mouseover', function(d,i) {
