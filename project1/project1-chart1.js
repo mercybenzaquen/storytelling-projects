@@ -1,7 +1,7 @@
 
 (function() {
   var margin = { top: 30, left: 100, right: 30, bottom: 30},
-  height = 400 - margin.top - margin.bottom,
+  height = 500 - margin.top - margin.bottom,
   width = 780 - margin.left - margin.right;
 
   console.log("Building chart 1");
@@ -135,15 +135,16 @@
     // Add your axes - I've added the x axis for you
     // Notice that xAxis gets a .tickFormat to format the dates!
     // You won't use this again unless you're doing time again.
-      var xAxis = d3.axisBottom(xPositionScale);
+      var xAxis = d3.axisBottom(xPositionScale).tickFormat(d3.timeFormat("%Y"));
       svg.append("g")
         .attr("class", "axis x-axis")
+        .attr("transform", "translate(0," + height + ")")
+
         .call(xAxis);
 
-      var yAxis = d3.axisLeft(yPositionScale).tickFormat(d3.timeFormat("%Y"));
+      var yAxis = d3.axisLeft(yPositionScale)
       svg.append("g")
         .attr("class", "axis y-axis")
-        .attr("transform", "translate(0," + height + ")")
         .call(yAxis);
 
 
