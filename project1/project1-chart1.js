@@ -15,10 +15,10 @@
   var yPositionScale = d3.scaleLinear().range([height, 0])
   var line = d3.line()
     .x(function(d) {
-      return xPositionScale(d.Score);
+      return xPositionScale(d.datetime);
       })
     .y(function(d) {
-      return yPositionScale(d.datetime);
+      return yPositionScale(d.Score);
       })
     .curve(d3.curveMonotoneX)
 
@@ -73,11 +73,11 @@
     // NOTE:I've done it for the datetime, you do it for the close price
     var minDatetime = d3.min(datapoints, function(d) { return d.datetime });
     var maxDatetime = d3.max(datapoints, function(d) { return d.datetime });
-    yPositionScale.domain([maxDatetime, minDatetime])
+    xPositionScale.domain([maxDatetime, minDatetime])
 
     var minClosetime = d3.min(datapoints, function(d) { return d.Score });
     var maxClosetime = d3.max(datapoints, function(d) { return d.Score });
-    xPositionScale.domain([minClosetime, maxClosetime])
+    yPositionScale.domain([minClosetime, maxClosetime])
 
 
     // Draw your dots
