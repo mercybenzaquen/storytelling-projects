@@ -138,12 +138,12 @@
       var xAxis = d3.axisBottom(xPositionScale);
       svg.append("g")
         .attr("class", "axis x-axis")
-        .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
       var yAxis = d3.axisLeft(yPositionScale).tickFormat(d3.timeFormat("%Y"));
       svg.append("g")
         .attr("class", "axis y-axis")
+        .attr("transform", "translate(0," + height + ")")
         .call(yAxis);
 
 
