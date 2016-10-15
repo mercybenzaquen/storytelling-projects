@@ -2,7 +2,7 @@
 (function() {
   var margin = { top: 30, left: 100, right: 30, bottom: 30},
   height = 300 - margin.top - margin.bottom,
-  width = 700 - margin.left - margin.right;
+  width = 900 - margin.left - margin.right;
 
   console.log("Building chart 1");
 
