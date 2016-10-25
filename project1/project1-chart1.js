@@ -1,6 +1,6 @@
 
 (function() {
-  var margin = { top: 30, left: 100, right: 30, bottom: 30},
+  var margin = { top: 100, left: 130, right: 30, bottom: 30},
   height = 400 - margin.top - margin.bottom,
   width = 900 - margin.left - margin.right;
 
@@ -130,20 +130,38 @@
       .attr("stroke", "red")
       .attr("stroke-width", 3)
 
+      // Adding Axis Labels (bonus)
+    // svg.append("text")
+    //    .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+    //    .attr("transform", "translate("(100)", "+(height)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
+    //    .text("Google searches(a value of 100 is the peak popularity for the term.)");
 
+    svg.append("text")      // text label for the x axis
+        .attr("x", -50)
+        .attr("y", -15 )
+        .style("text-anchor", "middle")
+        .text("Google searches")
+        .attr("font-size", "15px");
+
+        svg.append("text")      // text label for the x axis
+            .attr("x", 80)
+            .attr("y", +9 )
+            .style("text-anchor", "middle")
+            .text("* A value of 100 = peak in popularity")
+            .attr("font-size", "10px");
 
     // Add your axes - I've added the x axis for you
     // Notice that xAxis gets a .tickFormat to format the dates!
     // You won't use this again unless you're doing time again.
       var xAxis = d3.axisBottom(xPositionScale).tickFormat(d3.timeFormat("%Y"));
       svg.append("g")
-        .attr("class", "axis x-axis")
+        .attr("class", "x-axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
       var yAxis = d3.axisLeft(yPositionScale)
       svg.append("g")
-        .attr("class", "axis y-axis")
+        .attr("class", "y-axis")
         .call(yAxis);
 
 
