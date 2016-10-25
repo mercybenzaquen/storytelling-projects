@@ -4,8 +4,8 @@
     width = 960 - margin.left - margin.right;
 
     var padding = 30
-    var xPositionScale = d3.scaleLinear().domain([0,100000]).range([0, width])
-    var yPositionScale = d3.scaleLinear().domain([0,100]).range([height, 0]);
+    var xPositionScale = d3.scaleLinear().domain([-5000,100000]).range([0, width])
+    var yPositionScale = d3.scaleLinear().domain([0,100]).range([height, 0])
 
     var xPositionAxis = d3.scaleLinear().range([0, width ])
     var yPositionAxis = d3.scaleLinear().range([height, 0])
@@ -38,11 +38,11 @@
 
   function ready(error, datapoints) {
 
-    var maxGDP = d3.max(datapoints, function(d) { return +d.GDP_per_capita});
-    xPositionAxis.domain([0, maxGDP])
+    var maxGDP = d3.max(datapoints, function(d) { return +d.GDP_per_capita}); //actually not using these , they show extra line i dont like
+    xPositionAxis.domain([0, 80000])
 
     var maxAge = d3.max(datapoints, function(d) { return +d.life_expectancy });
-    yPositionAxis.domain([0, maxAge])
+    yPositionAxis.domain([0, 80])
 
 
     var sorted = datapoints.sort(function(a, b) {
@@ -102,7 +102,17 @@
           box.style("display","none");
         })
 
+        svg.append("text")      // text label for the x axis
+                .attr("x", -50)
+                .attr("y", -35)
+                .attr("transform", "rotate(-90)")
+                .style("text-anchor", "middle")
+                .text("Life Expectancy");
 
+        svg.append("text")      // text label for the x axis
+                .attr("transform", "translate(" + (width / 2) + " ," + (height + 40) + ")")
+                .style("text-anchor", "middle")
+                .text("GDP per capita");
 
       d3.select(".Africa")
           .on('click', function() {
@@ -143,9 +153,8 @@
                   .duration(1500)
                   .style('opacity', 1);
 
-
-
                 })
+
         d3.select(".large")
           .on('click', function() {
              svg.selectAll('circle')
@@ -267,10 +276,6 @@
                        })
                    })
 
-
-
-
-
         d3.select(".Europe")
           .on('click', function() {
             var EuropemaxGDP = d3.max(datapoints, function(d) {
@@ -380,8 +385,6 @@
 
 
 
-
-
         d3.select(".N-america")
           .on('click', function() {
             var NamericamaxGDP = d3.max(datapoints, function(d) {
@@ -433,7 +436,6 @@
               .style('opacity', 1);
                     })
                     })
-
 
 
           d3.select(".All")
@@ -532,13 +534,13 @@
 
     var xAxis = d3.axisBottom(xPositionAxis);
     svg.append("g")
-      .attr("class", "axis x-axis")
+      .attr("class", "ax-axis")
       .attr("transform", "translate(0," + (height) + ")")
       .call(xAxis);
 
     var yAxis = d3.axisLeft(yPositionAxis);
     svg.append("g")
-      .attr("class", "axis y-axis")
+      .attr("class", "ay-axis")
       .call(yAxis);
 
     }
