@@ -14,7 +14,7 @@
                        "<br><span style='color:gray;'> Total deaths: " + d.total_deaths + "</span>";
               })
 
-  var svg = d3.select("#project2-chart1")
+  var svg = d3.select("#project3-chart1")
     .append("svg")
     .attr("height", height + margin.top + margin.bottom)
     .attr("width", width + margin.left + margin.right)
