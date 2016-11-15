@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Mercy Benzaquen</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+      <style>
+      body {
+        font-weight: 300;
+        color: #808080
+      }
+
+
+
+      .d3-tip {
+        line-height: 1;
+        border: 1
+        font-weight: normal;
+        padding: 12px;
+        background: rgba(250, 250, 250, 250);
+        border-radius: 2px;
+      }
+
+      /* Creates a small triangle extender for the tooltip */
+      .d3-tip:after {
+        box-sizing: border-box;
+        display: inline;
+        font-size: 10px;
+        width: 100%;
+        line-height: 1;
+        color: rgba(0, 0, 0, 0.9);
+        content: "\25BC";
+        position: absolute;
+        text-align: center;
+      }
+
+      /* Style northward tooltips differently */
+      .d3-tip.n:after {
+        margin: -1px 0 0 0;
+        top: 100%;
+        left: 0;
+      }
+
+
+      svg { background: white; }
+
+      .x-axis path{
+        stroke: none;
+      }
+      .x-axis line{
+        stroke: none;
+      }
+      .x-axis text{
+        font-size: 18px;
+        fill: #808080
+      }
+
+      .y-axis path{
+        stroke: none;
+      }
+      .y-axis line{
+        stroke: none;
+      }
+      .y-axis text{
+        font-size: 15px;
+        fill: #808080
+      }
+
+
+
+      input[id=All] {
+      background-color: #bdbdbd;
+      border: 1px;
+      border-radius: 4px;
+      color: white;
+      padding: 5px 10px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;
+      font-size: 16px
+
+  }
+
+
+
+      input[id=Flood] {
+      background-color: #505EA7;
+      opacity: 0.9;
+      border: 1px;
+      border-radius: 4px;
+      color: white;
+      padding: 5px 10px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;
+      font-size: 16px
+
+  }
+
+  input[id= Storm] {
+  background-color: #57AFA3;
+  opacity: 0.9;
+  border: 1px;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 16px
+  }
+
+  input[id= Earthquake] {
+  background-color: #894b1a;
+  opacity: 0.9;
+  border: 1px;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 16px
+  }
+
+  input[id=Landslide] {
+  background-color: #E5BF7F;
+  opacity: 0.9;
+  border: 1px;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 16px
+  }
+
+  input[id=Drought] {
+  background-color: #59521C;
+  opacity: 0.9;
+  border: 1px;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 16px
+  }
+
+  input[id=Extreme] {
+  background-color: #ddcf06;
+  opacity: 0.9;
+  border: 1px;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 16px
+  }
+
+  input[id=Mass] {
+  background-color: #bdbdbd;
+  opacity: 0.9;
+  border: 1px;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 16px
+  }
+
+  input[id=Wildfire] {
+  background-color: #F98222;
+  opacity: 0.9;
+  border: 1px;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 16px
+  }
+
+  input[id=Volcanic] {
+  background-color: #D01000;
+  opacity: 0.9;
+  border: 1px;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 16px
+  }
+
+  select[id="named-select"] {
+    padding: 5px 10px;
+    color: black;
+    border: 1px;
+
+    font-size: 15px
+  }
+
+      </style>
+  </head>
+      <body>
+
+        <nav class="navbar navbar-fixed-top navbar-inverse">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li><a href= "..">Back to all projects</a></li>
+              </ul>
+            </div><!-- /.nav-collapse -->
+          </div><!-- /.container -->
+        </nav><!-- /.navbar -->
+        <div class="container">
+
+          <div class="row row-offcanvas row-offcanvas-right">
+
+            <div class="col-xs-12 col-sm-15">
+              <p class="pull-right visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+              </p>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <div class="jumbotron">
+                <h1> This Century in Natural Disasters</h1>
+                <p> How, when, and who nature chooses when it hits back</p>
+              </div>
+
+          <div id="project3-chart1">
+
+            <div id= 'buttons'>
+            <input type="submit" value="All disasters" id="All" class="All">
+            <input type="submit" value="Flood" id="Flood" class="Flood" >
+            <input type="submit" value="Storm" id="Storm" class= "Storm">
+            <input type="submit" value="Earthquake" id="Earthquake" class= "Earthquake">
+            <input type="submit" value="Landslide" id="Landslide" class= "Landslide" >
+            <input type="submit" value="Drought" id="Drought" class="Drought" >
+            <input type="submit" value="Extreme temperature" id="Extreme" class= "Extreme" >
+            <input type="submit" value="Wildfire" id="Wildfire" class= "Wildfire" >
+            <input type="submit" value="Volcanic activity" id="Volcanic" class= "Volcanic" >
+          </div>
+
+          <select id="named-select">
+            <option value=".circle">All continents</option>
+            <option value=".Africa">Africa</option>
+            <option value=".Americas">Americas</option>
+            <option value=".Asia">Asia</option>
+            <option value=".Europe">Europe</option>
+            <option value=".Oceania">Oceania</option>
+          </select>
+<br>
+<br>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+          <!--
+            This is d3-tip, which will give us d3 tooltips
+            https://github.com/Caged/d3-tip
+            <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+            <script src="https://github.com/Caged/d3-tip"></script>
+
+          -->
+        <!-- Now we include our actual visualization -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+        <script src="https://github.com/Caged/d3-tip"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+  <!-- <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css"> -->
+
+          <script src="project3.js"></script>
+        </body>
+
+
+        </html>
