@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Mercy Benzaquen</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+
+      <style>
+
+      svg { background: white; }
+
+
+      h1{
+        font-size: 53px;
+      }
+      p{
+        font-size: 20px;
+      }
+      text{
+        font-size: 15px;
+      }
+
+      .ax-axis path{
+        stroke: black;
+      }
+      .ax-axis line{
+        stroke: black;
+      }
+      .ax-axis text{
+        font-size: 12px;
+      }
+
+      .ay-axis path{
+        stroke: black;
+      }
+      .ay-axis line{
+        stroke: black;
+      }
+      .ay-axis text{
+        font-size: 12px;
+      }
+      #chart-1 {
+        position: relative;
+        width: 960px;
+      }
+
+      #country-display {
+        position: absolute;
+        top: 300px;
+        right: 100px;
+      }
+
+
+      .America {
+        fill: red;
+      }
+
+      circle {
+        stroke-width: 0.2;
+        stroke: black;
+        fill: black;
+      }
+
+    input[id=Africa] {
+    background-color: #fc8d62;
+    border: 1px;
+    border-radius: 4px;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 16px
+}
+
+input[id= S-america] {
+background-color: #8da0cb;
+border: 1px;
+border-radius: 4px;
+color: white;
+padding: 5px 10px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+font-size: 16px
+}
+
+input[id= N-america] {
+background-color: #e78ac3;
+border: 1px;
+border-radius: 4px;
+color: white;
+padding: 5px 10px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+font-size: 16px
+}
+
+input[id=Oceania] {
+background-color: #a6d854;
+border: 1px;
+border-radius: 4px;
+color: white;
+padding: 5px 10px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+font-size: 16px
+}
+
+input[id=Europe] {
+background-color: #ffd92f;
+border: 1px;
+border-radius: 4px;
+color: white;
+padding: 5px 10px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+font-size: 16px
+}
+
+input[id=Asia] {
+background-color: #66c2a5;
+border: 1px;
+border-radius: 4px;
+color: white;
+padding: 5px 10px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+font-size: 16px
+}
+
+input[id=All] {
+background-color: #bdbdbd;
+border: 1px;
+border-radius: 4px;
+color: white;
+padding: 5px 10px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+font-size: 16px
+}
+
+input[id=small] {
+background-color: #bdbdbd;
+border: 1px;
+border-radius: 4px;
+color: white;
+padding: 5px 10px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+font-size: 16px
+}
+
+input[id=large] {
+background-color: #bdbdbd;
+border: 1px;
+border-radius: 4px;
+color: white;
+padding: 5px 10px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+font-size: 16px
+}
+
+      </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href= "..">Back to all projects</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+    <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-15">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="jumbotron">
+            <h1>GDP per Capita and Life Expectacy</h1>
+            <p>Interact with the chart by clicking the different buttons</p>
+          </div>
+
+<br>
+<br>
+    <div id="chart-1">
+      <div id= 'buttons'>
+      <input type="submit" value="All continents" id="All" class="All">
+      <input type="submit" value="Africa" id="Africa" class="Africa" >
+      <input type="submit" value="North America" id="N-america" class= "N-america">
+      <input type="submit" value="South America" id="S-america" class= "S-america">
+      <input type="submit" value="Oceania" id="Oceania" class= "Oceania" >
+      <input type="submit" value="Europe" id="Europe" class="Europe" >
+      <input type="submit" value="Asia" id="Asia" class= "Asia" >
+      <br>
+      <input type="submit" value="Small Countries" id="small" class= "small" >
+      <input type="submit" value="Large Countries" id="large" class= "large" >
+
+    </div>
+      <div id="country-display">
+        <strong>Currently selected:</strong>
+        <span id="selected">Nothing</span> <br>
+        <strong>GDP:</strong>
+        <span id= "gdp"> Nothing</span> <br>
+        <strong>Life Expectancy:</strong>
+        <span id= "age"> Nothing</span> <br>
+      </div>
+    </div>
+</div>
+</div>
+
+    <!-- This is D3, our graphing library -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+
+    <!-- tooltip -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+      <script src="https://github.com/Caged/d3-tip"></script>
+      <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+
+    <!-- Now we include our actual visualization -->
+      <script src="chart-1.js"></script>
+  </body>
+</html>
