@@ -36,7 +36,6 @@
     d3.queue()
         .defer(d3.json, "world.topojson")
         .defer(d3.csv, "immigration_2015_world.csv")
-        .defer(d3.csv, "colors.csv")
         .await(ready)
 
     var projection = d3.geoMercator()
@@ -47,7 +46,7 @@
         .projection(projection)
 
 
-    function ready(error, data, datapoints, colors) {
+    function ready(error, data, datapoints) {
         datapoints.forEach(function(d) {
             d.origin_lat = +d.origin_lat;
             d.origin_lon = +d.origin_lon;
