@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Mercy Benzaquen</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+      <style>
+
+      /*.arcs {
+        stroke-width: 4px
+         }*/
+
+      body {
+           color: #595959
+         }
+
+      h1 {
+        font-size: 5em
+      }
+      .intro{
+        font-size: 15px
+      }
+
+
+      svg {
+        background: white;
+      }
+
+
+
+      /*.country{*/
+
+        /*stroke-width: 1*/
+      /*}*/
+
+      .d3-tip {
+        line-height: 1;
+        border: 1
+        font-weight: normal;
+        padding: 10px;
+        background: rgba(250, 250, 250, 250);
+        border-radius: 4px;
+      }
+
+      /* Creates a small triangle extender for the tooltip */
+      .d3-tip:after {
+        box-sizing: border-box;
+        display: inline;
+        font-size: 8px;
+        width: 100%;
+        line-height: 1;
+        color: rgba(250, 250, 250, 250);
+        content: "\25BC";
+        position: absolute;
+        text-align: center;
+      }
+
+      /* Style northward tooltips differently */
+      .d3-tip.n:after {
+        margin: -1px 0 0 0;
+        top: 100%;
+        left: 0;
+      }
+
+      </style>
+  </head>
+  <body>
+    <h1 align='middle'>Immigration is Human</h1>
+    <br>
+    <br>
+    <br>
+
+    <div class= 'intro' style="width:500px; margin:0 auto;text-align: center;font-size:17px ">
+    The world had a total of <strong>243,700,236 </strong> immigrants in 2015. <br>Each of these dots represents 20,000 people.
+    </div>
+    <div id="map-0"></div>
+    <br>
+    <br>
+    <br>
+
+
+    <div style="width:500px; margin:0 auto; font-size:17px">
+    Today, it is easier and faster to move accross the world. Under appropriate policies, immigrants can contribute to "inclusive and sustainable economic growth and development" in both their country of origin and their new homes, according to the United Nations.
+
+    </div>
+
+
+    <div id="map-1"></div>
+    <br>
+    <br>
+    <br>
+
+    <div style="width:500px; margin:0 auto;font-size:17px">
+    The benefits of migration are often overlooked, and immigrants become vurnerable members of their new societies, often working for longer hours and less pay, enduring discrimination, and even human right violations.
+    But for some, immigration is the only escape from poverty, conflict, inequality, and harsher realities in their place of origin.
+    <br>
+    <br>
+    Most immigrants move to high-income countries, with the U.S hosting about 19% of the world's total migrant population, 47 million people.
+    Germany and the Russia host around 12 million each, followed by Saudi Arabia with 10 million.
+    </div>
+
+    <div id="map-2"></div>
+    <br>
+    <br>
+    <br>
+
+   <div style="width:500px; margin:0 auto;font-size:17px">
+     Immigrants tend to move to countries located in the same continent as their country of origin. Most immigrants from Africa (52%), Asia (60%), Europe (66%), Oceania (59%) stay in their same continent. In the west is a different story, the majority of immigrants from Latin America and the Caribbean (84%) and Northern America (73%) move to countries in other continents.
+   </div>
+
+    <div id="map-3">
+
+    </div>
+
+
+    <!-- This is D3, our graphing library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+
+
+    <!-- Now we include our actual visualization -->
+    <script src="map0.js"></script>
+    <script src="map1.js"></script>
+    <script src="map2.js"></script>
+    <script src="map3.js"></script>
+
+    <script type='text/javascript'>
+      d3.queue()
+          .defer(d3.json, "world.topojson")
+          .defer(d3.csv, "immigration_2015_us.csv")
+          .defer(d3.csv, "immigration_2015_world2.csv")
+          .await(ready)
+
+        function ready(error, world, immigration_us, immigration_world) {
+          window.drawMap1(error, world, immigration_world)
+          window.drawMap2(error, world, immigration_us)
+          window.drawMap3(error, world, immigration_world)
+        }
+    </script>
+
+  </body>
+</html>
